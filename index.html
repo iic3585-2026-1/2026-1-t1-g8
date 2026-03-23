@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Moderno — Guía Interactiva</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">CSS Moderno</h1>
+    <p class="site-subtitle">Guía visual e interactiva de las principales características</p>
+  </header>
+
+  <main class="cards-grid">
+
+    <!-- Card 1: Media Queries y Container Queries -->
+    <section class="card" data-feature="queries">
+      <div class="card-header">
+        <span class="card-icon">📱</span>
+        <h2 class="card-title">Media & Container Queries</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="queries-preview">
+          <div class="qp-box"></div>
+          <div class="qp-box"></div>
+          <div class="qp-box"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Redimensiona el contenedor</h3>
+          <div class="queries-demo-wrapper">
+            <div class="queries-container">
+              <div class="q-item">A</div>
+              <div class="q-item">B</div>
+              <div class="q-item">C</div>
+            </div>
+          </div>
+          <p class="demo-hint">↔ Arrastra la esquina inferior derecha para redimensionar</p>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p><strong>Media queries</strong> responden al tamaño del <em>viewport</em> (la ventana del navegador). Se usan para hacer diseños responsivos:</p>
+          <pre><code>@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+          <p><strong>Container queries</strong> responden al tamaño del <em>contenedor padre</em>, no del viewport. Esto permite componentes verdaderamente reutilizables:</p>
+          <pre><code>.queries-container {
+  container-type: inline-size;
+}
+
+@container (max-width: 300px) {
+  .q-item {
+    flex-direction: column;
+  }
+}</code></pre>
+          <p>Esta página usa media queries para colapsar el grid a 1 columna en pantallas pequeñas, y container queries en los demos internos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 2: Flexbox -->
+    <section class="card" data-feature="flexbox">
+      <div class="card-header">
+        <span class="card-icon">↔️</span>
+        <h2 class="card-title">Flexbox</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="flex-preview">
+          <div class="fp-box"></div>
+          <div class="fp-box"></div>
+          <div class="fp-box"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Cambia las propiedades Flex</h3>
+          <div class="flex-controls">
+            <div class="control-group">
+              <label>justify-content:</label>
+              <button class="flex-btn active" data-prop="justify-content" data-val="flex-start">flex-start</button>
+              <button class="flex-btn" data-prop="justify-content" data-val="center">center</button>
+              <button class="flex-btn" data-prop="justify-content" data-val="space-between">space-between</button>
+              <button class="flex-btn" data-prop="justify-content" data-val="space-around">space-around</button>
+            </div>
+            <div class="control-group">
+              <label>align-items:</label>
+              <button class="flex-btn" data-prop="align-items" data-val="stretch">stretch</button>
+              <button class="flex-btn active" data-prop="align-items" data-val="center">center</button>
+              <button class="flex-btn" data-prop="align-items" data-val="flex-start">flex-start</button>
+              <button class="flex-btn" data-prop="align-items" data-val="flex-end">flex-end</button>
+            </div>
+            <div class="control-group">
+              <label>flex-direction:</label>
+              <button class="flex-btn active" data-prop="flex-direction" data-val="row">row</button>
+              <button class="flex-btn" data-prop="flex-direction" data-val="column">column</button>
+              <button class="flex-btn" data-prop="flex-direction" data-val="row-reverse">row-reverse</button>
+            </div>
+          </div>
+          <div class="flex-demo-container" id="flexDemo">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>Flexbox organiza elementos en una <strong>dirección principal</strong> (fila o columna). El contenedor flex controla cómo se distribuyen y alinean sus hijos:</p>
+          <pre><code>.container {
+  display: flex;
+  justify-content: space-between; /* eje principal */
+  align-items: center;           /* eje cruzado */
+  gap: 1rem;
+}</code></pre>
+          <p>Los items pueden crecer o encogerse con <code>flex-grow</code>, <code>flex-shrink</code> y <code>flex-basis</code>:</p>
+          <pre><code>.item {
+  flex: 1;          /* shorthand: grow=1 shrink=1 basis=0 */
+}</code></pre>
+          <p>En esta página, el header, los headers de cada card y el footer usan flexbox para alinear su contenido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 3: Grid -->
+    <section class="card" data-feature="grid">
+      <div class="card-header">
+        <span class="card-icon">⊞</span>
+        <h2 class="card-title">CSS Grid</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="grid-preview">
+          <div class="gp-box"></div>
+          <div class="gp-box"></div>
+          <div class="gp-box"></div>
+          <div class="gp-box"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Diferentes layouts de Grid</h3>
+          <div class="grid-controls">
+            <button class="grid-btn active" data-layout="equal">Columnas iguales</button>
+            <button class="grid-btn" data-layout="areas">Template Areas</button>
+            <button class="grid-btn" data-layout="span">Spanning</button>
+          </div>
+          <div class="grid-demo-container" id="gridDemo">
+            <div class="grid-item gi-header">Header</div>
+            <div class="grid-item gi-sidebar">Sidebar</div>
+            <div class="grid-item gi-main">Main</div>
+            <div class="grid-item gi-aside">Aside</div>
+            <div class="grid-item gi-footer">Footer</div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>CSS Grid permite crear layouts <strong>bidimensionales</strong> (filas y columnas simultáneamente):</p>
+          <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}</code></pre>
+          <p>Con <code>grid-template-areas</code> puedes nombrar regiones:</p>
+          <pre><code>.grid {
+  grid-template-areas:
+    "header header header"
+    "sidebar main aside"
+    "footer footer footer";
+}</code></pre>
+          <p>La unidad <code>fr</code> distribuye el espacio disponible proporcionalmente. El grid de cards de esta página usa <code>repeat(auto-fit, minmax(280px, 1fr))</code> para ser responsivo automáticamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 4: Variables y calc() -->
+    <section class="card" data-feature="variables">
+      <div class="card-header">
+        <span class="card-icon">🎨</span>
+        <h2 class="card-title">Variables & calc()</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="vars-preview">
+          <div class="vp-swatch" style="--vp-hue: 220"></div>
+          <div class="vp-swatch" style="--vp-hue: 340"></div>
+          <div class="vp-swatch" style="--vp-hue: 160"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Cambia variables en tiempo real</h3>
+          <div class="vars-controls">
+            <div class="control-group">
+              <label>--hue: <span id="hueValue">220</span></label>
+              <input type="range" id="hueSlider" min="0" max="360" value="220">
+            </div>
+            <div class="control-group">
+              <label>--saturation: <span id="satValue">70</span>%</label>
+              <input type="range" id="satSlider" min="0" max="100" value="70">
+            </div>
+            <div class="control-group">
+              <label>--radius: <span id="radiusValue">12</span>px</label>
+              <input type="range" id="radiusSlider" min="0" max="50" value="12">
+            </div>
+          </div>
+          <div class="vars-demo" id="varsDemo">
+            <div class="vars-box vars-primary">Primary</div>
+            <div class="vars-box vars-secondary">Secondary</div>
+            <div class="vars-box vars-accent">Accent</div>
+          </div>
+          <div class="calc-demo">
+            <label>--sidebar-width: <span id="sidebarValue">200</span>px</label>
+            <input type="range" id="sidebarSlider" min="50" max="300" value="200">
+            <div class="calc-layout">
+              <div class="calc-sidebar">Sidebar</div>
+              <div class="calc-main">Main: calc(100% - var(--sidebar-width))</div>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>Las <strong>variables CSS</strong> (custom properties) se declaran con <code>--nombre</code> y se usan con <code>var()</code>:</p>
+          <pre><code>:root {
+  --color-primary: hsl(220, 70%, 55%);
+  --spacing: 1rem;
+  --radius: 12px;
+}
+
+.card {
+  background: var(--color-primary);
+  padding: var(--spacing);
+  border-radius: var(--radius);
+}</code></pre>
+          <p><code>calc()</code> permite hacer aritmética con unidades mixtas:</p>
+          <pre><code>.main {
+  width: calc(100% - var(--sidebar-width));
+  padding: calc(var(--spacing) * 2);
+}</code></pre>
+          <p>Toda esta página usa variables CSS para colores, espaciado y border-radius definidos en <code>:root</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 5: Anidación (Nesting) -->
+    <section class="card" data-feature="nesting">
+      <div class="card-header">
+        <span class="card-icon">🪆</span>
+        <h2 class="card-title">Anidación de reglas</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="nest-preview">
+          <code>.card { &:hover { ... } }</code>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Comparación CSS tradicional vs anidado</h3>
+          <div class="nesting-comparison">
+            <div class="nesting-panel">
+              <h4>CSS Tradicional</h4>
+              <pre><code>.card {
+  background: white;
+  border-radius: 12px;
+}
+
+.card .card-title {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card .card-detail {
+  display: none;
+}
+
+.card.expanded .card-detail {
+  display: block;
+}</code></pre>
+            </div>
+            <div class="nesting-panel">
+              <h4>CSS Anidado (Nativo)</h4>
+              <pre><code>.card {
+  background: white;
+  border-radius: 12px;
+
+  .card-title {
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .card-detail {
+    display: none;
+  }
+
+  &.expanded .card-detail {
+    display: block;
+  }
+}</code></pre>
+            </div>
+          </div>
+          <div class="nesting-live-demo">
+            <div class="nest-example">
+              <span class="nest-title">Elemento padre</span>
+              <span class="nest-child">Hijo anidado</span>
+            </div>
+            <p class="demo-hint">Pasa el cursor sobre el elemento para ver los estilos anidados en acción</p>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>La <strong>anidación nativa</strong> de CSS permite escribir selectores hijos dentro del bloque del padre, similar a SASS/LESS pero sin preprocesador:</p>
+          <pre><code>.parent {
+  color: blue;
+
+  .child {         /* equivale a .parent .child */
+    color: red;
+  }
+
+  &:hover {        /* equivale a .parent:hover */
+    color: green;
+  }
+
+  &.active {       /* equivale a .parent.active */
+    font-weight: bold;
+  }
+}</code></pre>
+          <p>El <code>&</code> representa al selector padre. Es obligatorio para pseudo-clases y para combinar con el selector padre.</p>
+          <p>Todo el archivo <code>styles.css</code> de esta página usa anidación nativa para organizar las reglas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 6: Transformaciones -->
+    <section class="card" data-feature="transforms">
+      <div class="card-header">
+        <span class="card-icon">🔄</span>
+        <h2 class="card-title">Transformaciones</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="transform-preview">
+          <div class="tp-box"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Transforma el elemento con el cursor</h3>
+          <div class="transform-3d-wrapper">
+            <div class="transform-3d-card" id="transform3d">
+              <div class="t3d-front">Mueve el cursor aquí</div>
+            </div>
+          </div>
+          <div class="transform-controls">
+            <button class="transform-btn" data-transform="scale">scale(1.3)</button>
+            <button class="transform-btn" data-transform="skew">skewX(15deg)</button>
+            <button class="transform-btn" data-transform="translate">translate(30px, -20px)</button>
+            <button class="transform-btn" data-transform="rotate">rotate(45deg)</button>
+            <button class="transform-btn reset-btn" data-transform="reset">Reset</button>
+          </div>
+          <div class="transform-target" id="transformTarget">
+            Caja transformable
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>Las <strong>transformaciones CSS</strong> modifican la forma, posición y orientación visual de un elemento sin afectar el layout:</p>
+          <pre><code>.element {
+  transform: rotate(45deg) scale(1.2);
+  transform-origin: center center;
+}
+
+/* 3D con perspectiva */
+.container {
+  perspective: 800px;
+}
+.element {
+  transform: rotateY(30deg) rotateX(10deg);
+}</code></pre>
+          <p>Funciones principales: <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code>. Se pueden combinar en una sola declaración.</p>
+          <p>En esta página, las cards se elevan con <code>translateY(-4px)</code> al pasar el cursor, y la flecha rota 180° al expandir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 7: Transiciones -->
+    <section class="card" data-feature="transitions">
+      <div class="card-header">
+        <span class="card-icon">⏱️</span>
+        <h2 class="card-title">Transiciones</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="trans-preview">
+          <div class="trp-box"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Carrera de timing functions</h3>
+          <button class="race-btn" id="raceBtn">▶ Iniciar carrera</button>
+          <div class="race-track">
+            <div class="race-lane">
+              <span class="race-label">linear</span>
+              <div class="race-runner" style="transition-timing-function: linear"></div>
+            </div>
+            <div class="race-lane">
+              <span class="race-label">ease</span>
+              <div class="race-runner" style="transition-timing-function: ease"></div>
+            </div>
+            <div class="race-lane">
+              <span class="race-label">ease-in</span>
+              <div class="race-runner" style="transition-timing-function: ease-in"></div>
+            </div>
+            <div class="race-lane">
+              <span class="race-label">ease-out</span>
+              <div class="race-runner" style="transition-timing-function: ease-out"></div>
+            </div>
+            <div class="race-lane">
+              <span class="race-label">ease-in-out</span>
+              <div class="race-runner" style="transition-timing-function: ease-in-out"></div>
+            </div>
+            <div class="race-lane">
+              <span class="race-label">cubic-bezier</span>
+              <div class="race-runner" style="transition-timing-function: cubic-bezier(0.68,-0.55,0.27,1.55)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>Las <strong>transiciones</strong> animan el cambio entre dos estados de una propiedad CSS de forma suave:</p>
+          <pre><code>.element {
+  background: blue;
+  transition: background 0.3s ease,
+              transform 0.3s ease;
+}
+
+.element:hover {
+  background: red;
+  transform: scale(1.1);
+}</code></pre>
+          <p>Propiedades clave:</p>
+          <ul>
+            <li><code>transition-property</code> — qué propiedad animar</li>
+            <li><code>transition-duration</code> — cuánto dura</li>
+            <li><code>transition-timing-function</code> — la curva de velocidad</li>
+            <li><code>transition-delay</code> — cuánto esperar antes de empezar</li>
+          </ul>
+          <p>En esta página, las cards usan transiciones para el hover (elevación + sombra) y para la expansión del contenido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card 8: Animaciones -->
+    <section class="card" data-feature="animations">
+      <div class="card-header">
+        <span class="card-icon">✨</span>
+        <h2 class="card-title">Animaciones</h2>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-preview">
+        <div class="anim-preview">
+          <div class="ap-ball"></div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="demo-area">
+          <h3>Demo: Animaciones con @keyframes</h3>
+          <div class="anim-controls">
+            <button class="anim-btn" id="animPlayPause">⏸ Pausar</button>
+            <button class="anim-btn" data-direction="normal">normal</button>
+            <button class="anim-btn" data-direction="reverse">reverse</button>
+            <button class="anim-btn" data-direction="alternate">alternate</button>
+          </div>
+          <div class="anim-showcase" id="animShowcase">
+            <div class="anim-item">
+              <div class="anim-bounce-ball"></div>
+              <span>Bounce</span>
+            </div>
+            <div class="anim-item">
+              <div class="anim-pulse-ring"></div>
+              <span>Pulse</span>
+            </div>
+            <div class="anim-item">
+              <div class="anim-spinner"></div>
+              <span>Spinner</span>
+            </div>
+            <div class="anim-item">
+              <div class="anim-typing">CSS Moderno</div>
+              <span>Typing</span>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h3>¿Cómo funciona?</h3>
+          <p>Las <strong>animaciones CSS</strong> permiten cambios complejos y multi-paso usando <code>@keyframes</code>:</p>
+          <pre><code>@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.ball {
+  animation: bounce 0.6s ease-in-out infinite;
+}</code></pre>
+          <p>A diferencia de las transiciones, las animaciones:</p>
+          <ul>
+            <li>Pueden tener <strong>múltiples pasos</strong> (keyframes con %)</li>
+            <li>Se ejecutan <strong>automáticamente</strong> (sin necesidad de hover u otro trigger)</li>
+            <li>Pueden <strong>repetirse</strong> infinitamente</li>
+            <li>Tienen control de <strong>dirección</strong> (normal, reverse, alternate)</li>
+          </ul>
+          <p>El header de esta página usa una animación de entrada fade-in, y las cards aparecen con un delay escalonado usando <code>calc()</code>.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>CSS Moderno — Tarea 1 Grupo 8 — 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
