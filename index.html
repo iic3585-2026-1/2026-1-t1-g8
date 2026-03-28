@@ -13,23 +13,15 @@
     <p class="site-subtitle">Guía visual e interactiva de las principales características</p>
   </header>
 
-  <main class="cards-grid">
+  <main class="sections-list">
 
-    <!-- Card 1: Media Queries y Container Queries -->
-    <section class="card" data-feature="queries">
-      <div class="card-header">
-        <span class="card-icon">📱</span>
-        <h2 class="card-title">Media & Container Queries</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 1: Media & Container Queries ===== -->
+    <section class="feature-section" id="section-queries">
+      <div class="section-header">
+        <span class="section-icon">📱</span>
+        <h2 class="section-title">Media & Container Queries</h2>
       </div>
-      <div class="card-preview">
-        <div class="queries-preview">
-          <div class="qp-box"></div>
-          <div class="qp-box"></div>
-          <div class="qp-box"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
           <h3>Demo: Redimensiona el contenedor</h3>
           <div class="queries-demo-wrapper">
@@ -45,8 +37,8 @@
           <h3>¿Cómo funciona?</h3>
           <p><strong>Media queries</strong> responden al tamaño del <em>viewport</em> (la ventana del navegador). Se usan para hacer diseños responsivos:</p>
           <pre><code>@media (max-width: 600px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
+  .sections-list {
+    padding: 1rem;
   }
 }</code></pre>
           <p><strong>Container queries</strong> responden al tamaño del <em>contenedor padre</em>, no del viewport. Esto permite componentes verdaderamente reutilizables:</p>
@@ -59,51 +51,56 @@
     flex-direction: column;
   }
 }</code></pre>
-          <p>Esta página usa media queries para colapsar el grid a 1 columna en pantallas pequeñas, y container queries en los demos internos.</p>
+          <p>Esta página usa media queries para adaptar el layout en pantallas pequeñas, y container queries en el demo de arriba.</p>
         </div>
       </div>
     </section>
 
-    <!-- Card 2: Flexbox -->
-    <section class="card" data-feature="flexbox">
-      <div class="card-header">
-        <span class="card-icon">↔️</span>
-        <h2 class="card-title">Flexbox</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 2: Flexbox ===== -->
+    <section class="feature-section" id="section-flexbox">
+      <!-- Inputs ocultos para interactividad CSS-only -->
+      <input type="radio" name="flex-jc" id="jc-flex-start" checked class="demo-radio">
+      <input type="radio" name="flex-jc" id="jc-center" class="demo-radio">
+      <input type="radio" name="flex-jc" id="jc-space-between" class="demo-radio">
+      <input type="radio" name="flex-jc" id="jc-space-around" class="demo-radio">
+      <input type="radio" name="flex-ai" id="ai-stretch" class="demo-radio">
+      <input type="radio" name="flex-ai" id="ai-center" checked class="demo-radio">
+      <input type="radio" name="flex-ai" id="ai-flex-start" class="demo-radio">
+      <input type="radio" name="flex-ai" id="ai-flex-end" class="demo-radio">
+      <input type="radio" name="flex-fd" id="fd-row" checked class="demo-radio">
+      <input type="radio" name="flex-fd" id="fd-column" class="demo-radio">
+      <input type="radio" name="flex-fd" id="fd-row-reverse" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">↔️</span>
+        <h2 class="section-title">Flexbox</h2>
       </div>
-      <div class="card-preview">
-        <div class="flex-preview">
-          <div class="fp-box"></div>
-          <div class="fp-box"></div>
-          <div class="fp-box"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
           <h3>Demo: Cambia las propiedades Flex</h3>
           <div class="flex-controls">
             <div class="control-group">
-              <label>justify-content:</label>
-              <button class="flex-btn active" data-prop="justify-content" data-val="flex-start">flex-start</button>
-              <button class="flex-btn" data-prop="justify-content" data-val="center">center</button>
-              <button class="flex-btn" data-prop="justify-content" data-val="space-between">space-between</button>
-              <button class="flex-btn" data-prop="justify-content" data-val="space-around">space-around</button>
+              <span class="control-label">justify-content:</span>
+              <label for="jc-flex-start" class="flex-btn">flex-start</label>
+              <label for="jc-center" class="flex-btn">center</label>
+              <label for="jc-space-between" class="flex-btn">space-between</label>
+              <label for="jc-space-around" class="flex-btn">space-around</label>
             </div>
             <div class="control-group">
-              <label>align-items:</label>
-              <button class="flex-btn" data-prop="align-items" data-val="stretch">stretch</button>
-              <button class="flex-btn active" data-prop="align-items" data-val="center">center</button>
-              <button class="flex-btn" data-prop="align-items" data-val="flex-start">flex-start</button>
-              <button class="flex-btn" data-prop="align-items" data-val="flex-end">flex-end</button>
+              <span class="control-label">align-items:</span>
+              <label for="ai-stretch" class="flex-btn">stretch</label>
+              <label for="ai-center" class="flex-btn">center</label>
+              <label for="ai-flex-start" class="flex-btn">flex-start</label>
+              <label for="ai-flex-end" class="flex-btn">flex-end</label>
             </div>
             <div class="control-group">
-              <label>flex-direction:</label>
-              <button class="flex-btn active" data-prop="flex-direction" data-val="row">row</button>
-              <button class="flex-btn" data-prop="flex-direction" data-val="column">column</button>
-              <button class="flex-btn" data-prop="flex-direction" data-val="row-reverse">row-reverse</button>
+              <span class="control-label">flex-direction:</span>
+              <label for="fd-row" class="flex-btn">row</label>
+              <label for="fd-column" class="flex-btn">column</label>
+              <label for="fd-row-reverse" class="flex-btn">row-reverse</label>
             </div>
           </div>
-          <div class="flex-demo-container" id="flexDemo">
+          <div class="flex-demo-container">
             <div class="flex-item">1</div>
             <div class="flex-item">2</div>
             <div class="flex-item">3</div>
@@ -121,37 +118,32 @@
 }</code></pre>
           <p>Los items pueden crecer o encogerse con <code>flex-grow</code>, <code>flex-shrink</code> y <code>flex-basis</code>:</p>
           <pre><code>.item {
-  flex: 1;          /* shorthand: grow=1 shrink=1 basis=0 */
+  flex: 1; /* shorthand: grow=1 shrink=1 basis=0 */
 }</code></pre>
-          <p>En esta página, el header, los headers de cada card y el footer usan flexbox para alinear su contenido.</p>
+          <p>El header de esta página y los encabezados de cada sección usan flexbox para alinear su contenido.</p>
         </div>
       </div>
     </section>
 
-    <!-- Card 3: Grid -->
-    <section class="card" data-feature="grid">
-      <div class="card-header">
-        <span class="card-icon">⊞</span>
-        <h2 class="card-title">CSS Grid</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 3: CSS Grid ===== -->
+    <section class="feature-section" id="section-grid">
+      <input type="radio" name="grid-layout" id="grid-equal" checked class="demo-radio">
+      <input type="radio" name="grid-layout" id="grid-areas" class="demo-radio">
+      <input type="radio" name="grid-layout" id="grid-span" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">⊞</span>
+        <h2 class="section-title">CSS Grid</h2>
       </div>
-      <div class="card-preview">
-        <div class="grid-preview">
-          <div class="gp-box"></div>
-          <div class="gp-box"></div>
-          <div class="gp-box"></div>
-          <div class="gp-box"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
           <h3>Demo: Diferentes layouts de Grid</h3>
           <div class="grid-controls">
-            <button class="grid-btn active" data-layout="equal">Columnas iguales</button>
-            <button class="grid-btn" data-layout="areas">Template Areas</button>
-            <button class="grid-btn" data-layout="span">Spanning</button>
+            <label for="grid-equal" class="grid-btn">Columnas iguales</label>
+            <label for="grid-areas" class="grid-btn">Template Areas</label>
+            <label for="grid-span" class="grid-btn">Spanning</label>
           </div>
-          <div class="grid-demo-container" id="gridDemo">
+          <div class="grid-demo-container">
             <div class="grid-item gi-header">Header</div>
             <div class="grid-item gi-sidebar">Sidebar</div>
             <div class="grid-item gi-main">Main</div>
@@ -175,53 +167,41 @@
     "sidebar main aside"
     "footer footer footer";
 }</code></pre>
-          <p>La unidad <code>fr</code> distribuye el espacio disponible proporcionalmente. El grid de cards de esta página usa <code>repeat(auto-fit, minmax(280px, 1fr))</code> para ser responsivo automáticamente.</p>
+          <p>La unidad <code>fr</code> distribuye el espacio disponible proporcionalmente.</p>
         </div>
       </div>
     </section>
 
-    <!-- Card 4: Variables y calc() -->
-    <section class="card" data-feature="variables">
-      <div class="card-header">
-        <span class="card-icon">🎨</span>
-        <h2 class="card-title">Variables & calc()</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 4: Variables & calc() ===== -->
+    <section class="feature-section" id="section-variables">
+      <input type="radio" name="var-theme" id="theme-blue" checked class="demo-radio">
+      <input type="radio" name="var-theme" id="theme-purple" class="demo-radio">
+      <input type="radio" name="var-theme" id="theme-red" class="demo-radio">
+      <input type="radio" name="var-theme" id="theme-green" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">🎨</span>
+        <h2 class="section-title">Variables & calc()</h2>
       </div>
-      <div class="card-preview">
-        <div class="vars-preview">
-          <div class="vp-swatch" style="--vp-hue: 220"></div>
-          <div class="vp-swatch" style="--vp-hue: 340"></div>
-          <div class="vp-swatch" style="--vp-hue: 160"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
-          <h3>Demo: Cambia variables en tiempo real</h3>
-          <div class="vars-controls">
-            <div class="control-group">
-              <label>--hue: <span id="hueValue">220</span></label>
-              <input type="range" id="hueSlider" min="0" max="360" value="220">
-            </div>
-            <div class="control-group">
-              <label>--saturation: <span id="satValue">70</span>%</label>
-              <input type="range" id="satSlider" min="0" max="100" value="70">
-            </div>
-            <div class="control-group">
-              <label>--radius: <span id="radiusValue">12</span>px</label>
-              <input type="range" id="radiusSlider" min="0" max="50" value="12">
-            </div>
+          <h3>Demo: Cambia el tema de color</h3>
+          <div class="vars-theme-controls">
+            <label for="theme-blue" class="theme-btn theme-blue-btn">Azul</label>
+            <label for="theme-purple" class="theme-btn theme-purple-btn">Púrpura</label>
+            <label for="theme-red" class="theme-btn theme-red-btn">Rojo</label>
+            <label for="theme-green" class="theme-btn theme-green-btn">Verde</label>
           </div>
-          <div class="vars-demo" id="varsDemo">
+          <div class="vars-demo">
             <div class="vars-box vars-primary">Primary</div>
             <div class="vars-box vars-secondary">Secondary</div>
             <div class="vars-box vars-accent">Accent</div>
           </div>
           <div class="calc-demo">
-            <label>--sidebar-width: <span id="sidebarValue">200</span>px</label>
-            <input type="range" id="sidebarSlider" min="50" max="300" value="200">
+            <p class="demo-hint">calc() en acción: el área principal ocupa <code>calc(100% - 200px)</code></p>
             <div class="calc-layout">
-              <div class="calc-sidebar">Sidebar</div>
-              <div class="calc-main">Main: calc(100% - var(--sidebar-width))</div>
+              <div class="calc-sidebar">Sidebar<br><small>200px</small></div>
+              <div class="calc-main">Main: calc(100% − 200px)</div>
             </div>
           </div>
         </div>
@@ -249,21 +229,15 @@
       </div>
     </section>
 
-    <!-- Card 5: Anidación (Nesting) -->
-    <section class="card" data-feature="nesting">
-      <div class="card-header">
-        <span class="card-icon">🪆</span>
-        <h2 class="card-title">Anidación de reglas</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 5: Anidación ===== -->
+    <section class="feature-section" id="section-nesting">
+      <div class="section-header">
+        <span class="section-icon">🪆</span>
+        <h2 class="section-title">Anidación de reglas</h2>
       </div>
-      <div class="card-preview">
-        <div class="nest-preview">
-          <code>.card { &:hover { ... } }</code>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
-          <h3>Demo: Comparación CSS tradicional vs anidado</h3>
+          <h3>Demo: CSS tradicional vs anidado</h3>
           <div class="nesting-comparison">
             <div class="nesting-panel">
               <h4>CSS Tradicional</h4>
@@ -278,7 +252,8 @@
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px
+    rgba(0,0,0,0.15);
 }
 
 .card .card-detail {
@@ -301,7 +276,8 @@
   }
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px
+      rgba(0,0,0,0.15);
   }
 
   .card-detail {
@@ -328,15 +304,15 @@
           <pre><code>.parent {
   color: blue;
 
-  .child {         /* equivale a .parent .child */
+  .child {       /* .parent .child */
     color: red;
   }
 
-  &:hover {        /* equivale a .parent:hover */
+  &:hover {      /* .parent:hover */
     color: green;
   }
 
-  &.active {       /* equivale a .parent.active */
+  &.active {     /* .parent.active */
     font-weight: bold;
   }
 }</code></pre>
@@ -346,34 +322,34 @@
       </div>
     </section>
 
-    <!-- Card 6: Transformaciones -->
-    <section class="card" data-feature="transforms">
-      <div class="card-header">
-        <span class="card-icon">🔄</span>
-        <h2 class="card-title">Transformaciones</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 6: Transformaciones ===== -->
+    <section class="feature-section" id="section-transforms">
+      <input type="radio" name="transform-type" id="tf-none" checked class="demo-radio">
+      <input type="radio" name="transform-type" id="tf-scale" class="demo-radio">
+      <input type="radio" name="transform-type" id="tf-skew" class="demo-radio">
+      <input type="radio" name="transform-type" id="tf-translate" class="demo-radio">
+      <input type="radio" name="transform-type" id="tf-rotate" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">🔄</span>
+        <h2 class="section-title">Transformaciones</h2>
       </div>
-      <div class="card-preview">
-        <div class="transform-preview">
-          <div class="tp-box"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
-          <h3>Demo: Transforma el elemento con el cursor</h3>
+          <h3>Demo: Hover para 3D, botones para transformar</h3>
           <div class="transform-3d-wrapper">
-            <div class="transform-3d-card" id="transform3d">
-              <div class="t3d-front">Mueve el cursor aquí</div>
+            <div class="transform-3d-card">
+              <div class="t3d-front">Pasa el cursor aquí</div>
             </div>
           </div>
           <div class="transform-controls">
-            <button class="transform-btn" data-transform="scale">scale(1.3)</button>
-            <button class="transform-btn" data-transform="skew">skewX(15deg)</button>
-            <button class="transform-btn" data-transform="translate">translate(30px, -20px)</button>
-            <button class="transform-btn" data-transform="rotate">rotate(45deg)</button>
-            <button class="transform-btn reset-btn" data-transform="reset">Reset</button>
+            <label for="tf-scale" class="transform-btn">scale(1.3)</label>
+            <label for="tf-skew" class="transform-btn">skewX(15deg)</label>
+            <label for="tf-translate" class="transform-btn">translate(30px, -20px)</label>
+            <label for="tf-rotate" class="transform-btn">rotate(45deg)</label>
+            <label for="tf-none" class="transform-btn reset-btn">Reset</label>
           </div>
-          <div class="transform-target" id="transformTarget">
+          <div class="transform-target">
             Caja transformable
           </div>
         </div>
@@ -390,30 +366,30 @@
   perspective: 800px;
 }
 .element {
-  transform: rotateY(30deg) rotateX(10deg);
+  transform: rotateY(30deg)
+             rotateX(10deg);
 }</code></pre>
           <p>Funciones principales: <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code>. Se pueden combinar en una sola declaración.</p>
-          <p>En esta página, las cards se elevan con <code>translateY(-4px)</code> al pasar el cursor, y la flecha rota 180° al expandir.</p>
+          <p>El card 3D de arriba usa <code>rotateX</code> y <code>rotateY</code> al hacer hover.</p>
         </div>
       </div>
     </section>
 
-    <!-- Card 7: Transiciones -->
-    <section class="card" data-feature="transitions">
-      <div class="card-header">
-        <span class="card-icon">⏱️</span>
-        <h2 class="card-title">Transiciones</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 7: Transiciones ===== -->
+    <section class="feature-section" id="section-transitions">
+      <input type="checkbox" id="race-toggle" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">⏱️</span>
+        <h2 class="section-title">Transiciones</h2>
       </div>
-      <div class="card-preview">
-        <div class="trans-preview">
-          <div class="trp-box"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
           <h3>Demo: Carrera de timing functions</h3>
-          <button class="race-btn" id="raceBtn">▶ Iniciar carrera</button>
+          <label for="race-toggle" class="race-btn">
+            <span class="race-start">▶ Iniciar carrera</span>
+            <span class="race-reset">↺ Reiniciar</span>
+          </label>
           <div class="race-track">
             <div class="race-lane">
               <span class="race-label">linear</span>
@@ -461,33 +437,34 @@
             <li><code>transition-timing-function</code> — la curva de velocidad</li>
             <li><code>transition-delay</code> — cuánto esperar antes de empezar</li>
           </ul>
-          <p>En esta página, las cards usan transiciones para el hover (elevación + sombra) y para la expansión del contenido.</p>
         </div>
       </div>
     </section>
 
-    <!-- Card 8: Animaciones -->
-    <section class="card" data-feature="animations">
-      <div class="card-header">
-        <span class="card-icon">✨</span>
-        <h2 class="card-title">Animaciones</h2>
-        <span class="card-arrow">▼</span>
+    <!-- ===== SECCIÓN 8: Animaciones ===== -->
+    <section class="feature-section" id="section-animations">
+      <input type="checkbox" id="anim-paused" class="demo-radio">
+      <input type="radio" name="anim-dir" id="anim-normal" checked class="demo-radio">
+      <input type="radio" name="anim-dir" id="anim-reverse" class="demo-radio">
+      <input type="radio" name="anim-dir" id="anim-alternate" class="demo-radio">
+
+      <div class="section-header">
+        <span class="section-icon">✨</span>
+        <h2 class="section-title">Animaciones</h2>
       </div>
-      <div class="card-preview">
-        <div class="anim-preview">
-          <div class="ap-ball"></div>
-        </div>
-      </div>
-      <div class="card-detail">
+      <div class="section-body">
         <div class="demo-area">
           <h3>Demo: Animaciones con @keyframes</h3>
           <div class="anim-controls">
-            <button class="anim-btn" id="animPlayPause">⏸ Pausar</button>
-            <button class="anim-btn" data-direction="normal">normal</button>
-            <button class="anim-btn" data-direction="reverse">reverse</button>
-            <button class="anim-btn" data-direction="alternate">alternate</button>
+            <label for="anim-paused" class="anim-btn anim-toggle-btn">
+              <span class="anim-pause-txt">⏸ Pausar</span>
+              <span class="anim-play-txt">▶ Reproducir</span>
+            </label>
+            <label for="anim-normal" class="anim-btn">normal</label>
+            <label for="anim-reverse" class="anim-btn">reverse</label>
+            <label for="anim-alternate" class="anim-btn">alternate</label>
           </div>
-          <div class="anim-showcase" id="animShowcase">
+          <div class="anim-showcase">
             <div class="anim-item">
               <div class="anim-bounce-ball"></div>
               <span>Bounce</span>
@@ -519,61 +496,187 @@
 }
 
 .ball {
-  animation: bounce 0.6s ease-in-out infinite;
+  animation: bounce 0.6s
+             ease-in-out infinite;
 }</code></pre>
           <p>A diferencia de las transiciones, las animaciones:</p>
           <ul>
             <li>Pueden tener <strong>múltiples pasos</strong> (keyframes con %)</li>
-            <li>Se ejecutan <strong>automáticamente</strong> (sin necesidad de hover u otro trigger)</li>
+            <li>Se ejecutan <strong>automáticamente</strong> (sin hover)</li>
             <li>Pueden <strong>repetirse</strong> infinitamente</li>
             <li>Tienen control de <strong>dirección</strong> (normal, reverse, alternate)</li>
           </ul>
-          <p>El header de esta página usa una animación de entrada fade-in, y las cards aparecen con un delay escalonado usando <code>calc()</code>.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- QUIZ SECTION -->
+  <!-- ===== QUIZ ===== -->
   <section class="quiz-section" id="quizSection">
-    <div class="quiz-header" id="quizToggle">
+    <div class="quiz-section-header">
       <span class="quiz-icon">🧠</span>
       <h2>Quiz: Pon a prueba lo que aprendiste</h2>
-      <span class="quiz-arrow">▼</span>
     </div>
 
-    <div class="quiz-content" id="quizContent">
-      <div class="quiz-progress">
-        <div class="quiz-progress-bar" id="quizProgressBar"></div>
-      </div>
-      <p class="quiz-score" id="quizScore">Pregunta <span id="quizCurrent">1</span> de <span id="quizTotal">8</span> — Correctas: <span id="quizCorrect">0</span></p>
+    <div class="quiz-content">
 
-      <div class="quiz-question" id="quizQuestion">
-        <h3 id="quizTitle"></h3>
-        <p id="quizDescription"></p>
-        <div class="quiz-hint" id="quizHint"></div>
+      <div class="quiz-question">
+        <h3>1. Flexbox: Centra los elementos</h3>
+        <p>Escribe las propiedades CSS para centrar los hijos horizontal y verticalmente dentro de un contenedor flex.</p>
         <div class="quiz-editor-wrapper">
-          <div class="quiz-context" id="quizContext"></div>
-          <textarea class="quiz-editor" id="quizEditor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context">.container {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
         </div>
-        <div class="quiz-preview-area" id="quizPreviewArea">
-          <h4>Vista previa:</h4>
-          <div class="quiz-preview" id="quizPreview"></div>
-        </div>
-        <div class="quiz-actions">
-          <button class="quiz-btn quiz-btn-check" id="quizCheck">Verificar</button>
-          <button class="quiz-btn quiz-btn-hint" id="quizHintBtn">Pista</button>
-          <button class="quiz-btn quiz-btn-next" id="quizNext" disabled>Siguiente</button>
-        </div>
-        <div class="quiz-feedback" id="quizFeedback"></div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Necesitas 3 propiedades: una para activar flex, otra para el eje principal y otra para el eje cruzado.</p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  display: flex;
+  justify-content: center;
+  align-items: center;</code></pre>
+        </details>
       </div>
 
-      <div class="quiz-results" id="quizResults" style="display:none">
-        <h3>Resultados</h3>
-        <div class="quiz-final-score" id="quizFinalScore"></div>
-        <button class="quiz-btn quiz-btn-check" id="quizRestart">Reiniciar Quiz</button>
+      <div class="quiz-question">
+        <h3>2. Grid: Crea un layout de 3 columnas</h3>
+        <p>Define un grid de 3 columnas iguales con un espacio de 1rem entre ellas.</p>
+        <div class="quiz-editor-wrapper">
+          <div class="quiz-context">.grid {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Usa <code>display: grid</code>, <code>grid-template-columns</code> con la unidad <code>fr</code>, y <code>gap</code>.</p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;</code></pre>
+        </details>
       </div>
+
+      <div class="quiz-question">
+        <h3>3. Variables CSS: Define y usa una variable</h3>
+        <p>Declara una variable <code>--main-color</code> con valor <code>#3a86ff</code> y úsala como <code>background</code>.</p>
+        <div class="quiz-editor-wrapper">
+          <div class="quiz-context">.element {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Declara la variable con <code>--nombre: valor;</code> y úsala con <code>var(--nombre)</code>.</p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  --main-color: #3a86ff;
+  background: var(--main-color);</code></pre>
+        </details>
+      </div>
+
+      <div class="quiz-question">
+        <h3>4. calc(): Ancho dinámico</h3>
+        <p>Define un ancho que sea el 100% menos 200px usando <code>calc()</code>.</p>
+        <div class="quiz-editor-wrapper">
+          <div class="quiz-context">.main-content {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>La sintaxis es: <code>width: calc(valor1 - valor2);</code> Los espacios alrededor del operador son obligatorios.</p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  width: calc(100% - 200px);</code></pre>
+        </details>
+      </div>
+
+      <div class="quiz-question">
+        <h3>5. Transform: Rota y escala</h3>
+        <p>Aplica una rotación de 45 grados y un escalado de 1.5 en una sola propiedad <code>transform</code>.</p>
+        <div class="quiz-editor-wrapper">
+          <div class="quiz-context">.element {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Puedes combinar funciones en una sola línea: <code>transform: funcion1() funcion2();</code></p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  transform: rotate(45deg) scale(1.5);</code></pre>
+        </details>
+      </div>
+
+      <div class="quiz-question">
+        <h3>6. Transition: Anima el color de fondo</h3>
+        <p>Agrega una transición para <code>background-color</code> que dure 0.5s con timing <code>ease-in-out</code>.</p>
+        <div class="quiz-editor-wrapper">
+          <div class="quiz-context">.button {</div>
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <div class="quiz-context-suffix">}</div>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Usa la propiedad shorthand: <code>transition: propiedad duración timing;</code></p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>  transition: background-color 0.5s ease-in-out;</code></pre>
+        </details>
+      </div>
+
+      <div class="quiz-question">
+        <h3>7. Animation: Crea un keyframe de rebote</h3>
+        <p>Escribe una regla <code>@keyframes</code> llamada "rebote" que en 0% tenga <code>translateY(0)</code> y en 50% tenga <code>translateY(-30px)</code>.</p>
+        <div class="quiz-editor-wrapper">
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>La estructura es: <code>@keyframes nombre { 0% { transform: ...; } 50% { transform: ...; } }</code></p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>@keyframes rebote {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}</code></pre>
+        </details>
+      </div>
+
+      <div class="quiz-question">
+        <h3>8. Media Query: Diseño responsivo</h3>
+        <p>Escribe una media query que, cuando el ancho sea menor a 768px, cambie el grid a 1 columna.</p>
+        <div class="quiz-editor-wrapper">
+          <textarea class="quiz-editor" spellcheck="false" placeholder="Escribe tu código CSS aquí..."></textarea>
+        </div>
+        <details class="quiz-details quiz-hint-details">
+          <summary>💡 Pista</summary>
+          <p>Usa <code>@media (max-width: 768px) { selector { propiedad: valor; } }</code></p>
+        </details>
+        <details class="quiz-details quiz-solution-details">
+          <summary>✅ Ver solución</summary>
+          <pre><code>@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+        </details>
+      </div>
+
     </div>
   </section>
 
@@ -581,6 +684,5 @@
     <p>CSS Moderno — Tarea 1 Grupo 8 — 2026</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
