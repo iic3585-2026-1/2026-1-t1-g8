@@ -645,6 +645,7 @@ body {
   width: 120px;
   height: 80px;
   margin: var(--spacing) auto;
+  padding: var(--spacing);
   background: var(--color-primary);
   color: white;
   display: flex;
